@@ -1,0 +1,28 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+    <br/>
+    <t:summary icon="orange-square.png">
+        Errors ! <br/>
+
+        <j:if test="${it.isShowErrors()}">
+            <j:set var="projectMessages" value="${it.getErrorlogs('error')}"/>
+            <j:forEach var="projectMessage" items="${projectMessages}">
+                <p>${projectMessage}</p>
+            </j:forEach>
+        </j:if>
+
+    </t:summary>
+    <br/>
+    <t:summary icon="orange-square.png">
+        Warnings ! <br/>
+
+        <j:if test="${it.isShowWarnings()}">
+            <j:set var="projectMessages" value="${it.getErrorlogs('warning')}"/>
+            <j:forEach var="projectMessage" items="${projectMessages}">
+                <p>${projectMessage}</p>
+            </j:forEach>
+        </j:if>
+
+    </t:summary>
+</j:jelly>
